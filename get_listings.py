@@ -116,6 +116,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", "--user", action='store')
     args = parser.parse_args()
-    inpt = args.user.split(",")
-    
+    inpt = args.user.split("_")
+    print(inpt)
     get_listing(inpt) 

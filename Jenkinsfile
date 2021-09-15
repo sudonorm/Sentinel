@@ -21,7 +21,7 @@ pipeline{
             }
         }
 
-        stage('Get Quotes') {
+        stage('Get Listings') {
             steps {
                 script {
                     
