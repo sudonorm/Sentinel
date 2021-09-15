@@ -38,8 +38,6 @@ def get_link() -> str: return _start() + _compress([19, 7, 14, 17]) + _point() +
 
 def get_listing(deets:List = []):
 
-    tel.send_message(messages=["testing...testing..."], token = deets[1], chat_id = int(deets[2]))
-    
     userPath = os.path.join("C:\\Users\\" , deets[0])
     trailing = _compress([3, 14, 2, 20, 12, 4, 13, 19, 18]).title() + _slash() + _compress([17, 4, 15, 14, 18]) + _slash() + _compress([0, 15, 0, 17, 19, 12, 4, 13, 19]).title() + _compress([18, 4, 0, 17, 2, 7]).title()
     filePath = os.path.join(os.path.join(userPath, trailing), "Listings.csv")
