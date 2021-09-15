@@ -8,10 +8,11 @@ from telegram_sidekick import TelegramSidekick
 from string import ascii_lowercase
 from typing import List, Dict
 import argparse
-# from dotenv import load_dotenv
-# from os.path import join, dirname
 
 ### For local development #######################
+
+# from dotenv import load_dotenv
+# from os.path import join, dirname
 
 # dotenv_path = join(dirname(__file__), '.env')
 # load_dotenv(dotenv_path)
@@ -37,7 +38,7 @@ def get_link() -> str: return _start() + _compress([19, 7, 14, 17]) + _point() +
 
 def get_listing(deets:List = []):
 
-    tel.send_message(messages=["testing...testing..."], token = deets[1], chat_id = deets[2])
+    tel.send_message(messages=["testing...testing..."], token = deets[1], chat_id = int(deets[2]))
     
     userPath = os.path.join("C:\\Users\\" , deets[0])
     trailing = _compress([3, 14, 2, 20, 12, 4, 13, 19, 18]).title() + _slash() + _compress([17, 4, 15, 14, 18]) + _slash() + _compress([0, 15, 0, 17, 19, 12, 4, 13, 19]).title() + _compress([18, 4, 0, 17, 2, 7]).title()
@@ -103,12 +104,12 @@ def get_listing(deets:List = []):
             
             if "Balkon" in properties:
                 messageIntro = "A new listing was found on " + time.strftime("%h-%d-%Y at %T") +". Details: "
-                tel.send_message(messages=[messageIntro, properties, address, price, url], token = deets[1], chat_id = deets[2])
+                tel.send_message(messages=[messageIntro, properties, address, price, url], token = deets[1], chat_id = int(deets[2]))
             
     if startLen != len(input_listings):
         input_listings.to_csv("Listings.csv", index=False)
         
-    print("done!")
+    print("Happy viewing :)")
         
     driver.quit()
     
@@ -117,5 +118,5 @@ if __name__ == "__main__":
     parser.add_argument("-u", "--user", action='store')
     args = parser.parse_args()
     inpt = args.user.split("_")
-    print(inpt)
+    
     get_listing(inpt) 
