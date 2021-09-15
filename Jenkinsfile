@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     triggers {
-        cron('H 8 * * *') // Run script everyday at 8:53am 
+        cron('H */4 * * *') // Run script everyday at 8:53am 
     }
     stages {
         stage('Checkout Code') {
@@ -27,10 +27,10 @@ pipeline{
                     
                     withCredentials([string(credentialsId: 'token_and_chat_id', variable: 'tokenChatId')]) {
 
-                        bat 'echo Started By: %tokenChatId%'
+                        bat 'echo Started...'
                         bat 'venv/Scripts/activate'
                         bat 'python get_listings.py -u %tokenChatId%' // run python script 
-                        bat 'echo "file run"'
+                        bat 'echo "Process complete!"'
 
                         }
                 }
