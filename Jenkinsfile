@@ -5,11 +5,11 @@ pipeline{
         cron('H */4 * * *') // Run script everyday at 8:53am 
     }
     stages {
-        stage('Checkout Code') {
-            steps {
-                bat 'echo "code checked out" ' // this stage can be used to set-up some git checkout if "pipeline with SCM" is not selected while setting up the job
-            }
-        }
+        //stage('Checkout Code') {
+         //   steps {
+          //      bat 'echo "code checked out" ' // this stage can be used to set-up some git checkout if "pipeline with SCM" is not selected while setting up the job
+          //  }
+       // }
 
         stage('Create VirtualEnv') {
             steps {
