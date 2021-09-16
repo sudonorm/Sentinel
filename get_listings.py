@@ -105,7 +105,7 @@ def get_listing(deets:List = []):
                 tel.send_message(messages=[messageIntro, properties, address, price, url], token = deets[1], chat_id = int(deets[2]))
             
     if startLen != len(input_listings):
-        input_listings.to_csv("Listings.csv", index=False)
+        input_listings.to_csv(filePath, index=False)
         
     print("Happy viewing :)")
         
