@@ -100,7 +100,7 @@ def get_listing(deets:List = []):
         if not (properties, address, price, url) in entriesList:
             input_listings = input_listings.append({"props":properties, "address":address, "price":price, "url":url}, ignore_index=True)
             
-            if "Balkon" in properties:
+            if "Balkon" in properties and "geschoss" not in properties:
                 messageIntro = "A new listing was found on " + time.strftime("%h-%d-%Y at %T") +". Details: "
                 tel.send_message(messages=[messageIntro, properties, address, price, url], token = deets[1], chat_id = int(deets[2]))
             
