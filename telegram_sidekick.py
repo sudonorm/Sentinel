@@ -47,17 +47,20 @@ class TelegramSidekick:
         request = telegram.utils.request.Request(read_timeout=timeout)
         bot = telegram.Bot(token, request=request)
         
-        updates = bot.get_updates()
-        dateSent = updates[0]["message"]["date"].strftime('%Y-%m-%d')
-        message = updates[0]["message"]["text"]
+        updates = bot.get_updates(timeout=30)
         
-        return message, dateSent
-    
+        if not len(updates) == 0:
+
+            dateSent = updates[0]["message"]["date"].strftime('%Y-%m-%d')
+            message = updates[0]["message"]["text"]
+            
+            return message, dateSent, updates
+        else:
+            raise Exception("No new messages were fetched. The last message needs to have been sent to your bot less than 24 hours ago in order to be able to fetch it. Please send a message to the bot and try again.")
+
     def get_chat_id(self, *, token:str = None, timeout:int = 30):
         """Get the chat id of a Telegram bot"""
         
-        request = telegram.utils.request.Request(read_timeout=timeout)
-        bot = telegram.Bot(token, request=request)
-        updates = bot.get_updates()
+        message, dateSent, updates = self.get_latest_message(token=token, timeout=timeout)
     
         return updates[0].message.from_user.id
