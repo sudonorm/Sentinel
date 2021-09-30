@@ -95,6 +95,12 @@ def get_listing(deets:List = []):
         properties = fullTextList[0]
         address = fullTextList[1]
         price = fullTextList[2].split(",")[0]
+        
+        try:
+            freeFrom = fullTextList[3]
+        except:
+            freeFrom = "immediately"
+            
         url = get_link() + listing.find("a", href=True)["href"]
         
         if not (properties, address, price, url) in entriesList:
@@ -102,7 +108,7 @@ def get_listing(deets:List = []):
             
             if "Balkon" in properties and "geschoss" not in properties:
                 messageIntro = "A new listing was found on " + time.strftime("%h-%d-%Y at %T") +". Details: "
-                tel.send_message(messages=[messageIntro, properties, address, price, url], token = deets[1], chat_id = int(deets[2]))
+                tel.send_message(messages=[messageIntro, properties, address, price, url, freeFrom], token = deets[1], chat_id = int(deets[2]))
             
     if startLen != len(input_listings):
         input_listings.to_csv(filePath, index=False)
