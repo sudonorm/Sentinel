@@ -8,6 +8,7 @@ from telegram_sidekick import TelegramSidekick
 from string import ascii_lowercase
 from typing import List, Dict
 import argparse
+import re
 
 ### For local development #######################
 
@@ -95,11 +96,11 @@ def get_listing(deets:List = []):
         properties = fullTextList[0]
         address = fullTextList[1]
         price = fullTextList[2].split(",")[0]
-        
+          
         try:
-            freeFrom = fullTextList[3]
+            freeFrom = re.findall(r"frei ab \d{2}\.\d{2}\.\d{4}|frei ab sofort", [x for x in fullTextList[2].split(",") if "frei ab" in x][0])[0]
         except:
-            freeFrom = "immediately"
+            freeFrom = "frei ab sofort"
             
         url = get_link() + listing.find("a", href=True)["href"]
         
