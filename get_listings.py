@@ -48,7 +48,7 @@ def get_listing(deets:List = []):
     startLen = len(input_listings)
 
     option = webdriver.ChromeOptions()
-    option.add_argument('--headless')
+    # option.add_argument('--headless')
     option.add_argument('--no-sandbox')
     option.add_argument('--disable-dev-shm-usage')
     option.add_argument('--incognito')
