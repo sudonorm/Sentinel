@@ -109,7 +109,8 @@ def get_listing(deets:List = []):
             
             if "Balkon" in properties and "geschoss" not in properties:
                 messageIntro = "Apartment: A new listing was found on " + time.strftime("%h-%d-%Y at %T") +". Details: "
-                tel.send_message(messages=[messageIntro, properties, address, price, url, freeFrom], token = deets[1], chat_id = int(deets[2]))
+                fullMessage = f"{messageIntro}{' '}{properties}{' '}{address}{' '}{price}{' '}{url}{' '}{freeFrom}"
+                tel.send_message(messages=[fullMessage], token = deets[1], chat_id = int(deets[2]))
             
     if startLen != len(input_listings):
         input_listings.to_csv(filePath, index=False)
