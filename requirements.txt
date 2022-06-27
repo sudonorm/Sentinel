@@ -3,7 +3,7 @@ bs4
 pandas
 numpy
 openpyxl
-python-dotenv==0.19.0
+python-dotenv
 python-telegram-bot==13.7
 selenium
 requests
