@@ -109,7 +109,7 @@ def get_listing(deets:List = []):
             
             if "Balkon" in properties and "geschoss" not in properties:
                 messageIntro = "Apartment: A new listing was found on " + time.strftime("%h-%d-%Y at %T") +". Details: "
-                fullMessage = f"{messageIntro}{' '}{properties}{' '}{address}{' '}{price}{' '}{url}{' '}{freeFrom}"
+                fullMessage = f"{messageIntro}{' '}{properties}{'. Address: '}{address}{'. Price: '}{price}{'. Website url: '}{url}{' '}{freeFrom}"
                 tel.send_message(messages=[fullMessage], token = deets[1], chat_id = int(deets[2]))
             
     if startLen != len(input_listings):
