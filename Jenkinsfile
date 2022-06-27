@@ -16,6 +16,7 @@ pipeline{
                 bat 'python --version' // Add the Python path as a system environment variable to be able to use the Python installed on your Windows PC
                 bat 'pip install virtualenv'
                 bat 'virtualenv venv'
+                bat 'python.exe -m pip install --upgrade pip'
                 bat 'pip install -r requirements.txt' // Install requirements
                 bat 'echo "set-up done" '
             }

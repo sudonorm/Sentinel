@@ -9,7 +9,7 @@ colorama==0.4.4
 et-xmlfile==1.1.0
 importlib-resources==5.2.2
 numpy==1.19.5
-openpyxl==3.0.8
+openpyxl
 pandas==1.1.5
 python-dateutil==2.8.2
 python-dotenv==0.19.0
@@ -22,5 +22,5 @@ tornado==6.1
 tzdata==2021.1
 tzlocal==3.0
 urllib3==1.26.6
-xlrd==2.0.1
+xlrd
 zipp==3.5.0
