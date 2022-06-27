@@ -48,7 +48,7 @@ def get_listing(deets:List = []):
     startLen = len(input_listings)
 
     option = webdriver.ChromeOptions()
-    option.add_argument('--headless')
+    # option.add_argument('--headless')
     option.add_argument('--no-sandbox')
     option.add_argument('--disable-dev-shm-usage')
     option.add_argument('--incognito')
@@ -108,7 +108,7 @@ def get_listing(deets:List = []):
             input_listings = input_listings.append({"props":properties, "address":address, "price":price, "url":url}, ignore_index=True)
             
             if "Balkon" in properties and "geschoss" not in properties:
-                messageIntro = "A new listing was found on " + time.strftime("%h-%d-%Y at %T") +". Details: "
+                messageIntro = "Apartment: A new listing was found on " + time.strftime("%h-%d-%Y at %T") +". Details: "
                 tel.send_message(messages=[messageIntro, properties, address, price, url, freeFrom], token = deets[1], chat_id = int(deets[2]))
             
     if startLen != len(input_listings):
@@ -116,7 +116,7 @@ def get_listing(deets:List = []):
         
     print("Happy viewing :)")
         
-    driver.quit()
+    # driver.quit()
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
