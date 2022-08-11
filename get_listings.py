@@ -42,7 +42,7 @@ def get_listing(deets:List = []):
     userPath = os.path.join("C:\\Users\\" , deets[0])
     trailing = _compress([3, 14, 2, 20, 12, 4, 13, 19, 18]).title() + _slash() + _compress([17, 4, 15, 14, 18]) + _slash() + _compress([0, 15, 0, 17, 19, 12, 4, 13, 19]).title() + _compress([18, 4, 0, 17, 2, 7]).title()
     filePath = os.path.join(os.path.join(userPath, trailing), "Listings.csv")
-    print(filePath)
+
     input_listings = pd.read_csv(filePath)
     entriesList = [x for x in tuple(zip(input_listings["props"], input_listings["address"], input_listings["price"], input_listings["url"]))]
     startLen = len(input_listings)
